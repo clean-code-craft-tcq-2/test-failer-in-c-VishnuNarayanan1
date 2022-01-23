@@ -16,7 +16,8 @@ St_ColourInfo ParseColour(int majorColourIndex, int minorColourIndex);
 void printColourPairAndCodeInConsoleStub(int colorCode, char* majorColor, char* minorColor);
 int printColorMapStub(void (*Fn_Ptr_printColourPairAndCodeInConsole)(int,  char*,  char* ));
     
-
+    const char* majorColor[] = {"White", "Red", "Black", "Yellow", "Violet"};
+    const char* minorColor[] = {"Blue", "Orange", "Green", "Brown", "Slate"};
 
 int printColorMap() {
     const char* majorColor[] = {"White", "Red", "Black", "Yellow", "Violet"};
@@ -41,8 +42,8 @@ int printColorMapStub(void (*Fn_Ptr_printColourPairAndCodeInConsole)(int,  char*
         for(minorColourIndex = 0; minorColourIndex < 5; minorColourIndex++) 
         {
             ColourInfo.colourCode = 1;
-            ColourInfo.majorColour = "White";
-            ColourInfo.majorColour = "Red";
+            strcpy(ColourInfo.majorColour,majorColor[1]);
+            strcpy(ColourInfo.minorColour,minorColor[1]);
            // ColourInfo = ParseColour(majorColourIndex,minorColourIndex);
                 printf("Print %d", InvocationOfPrintInConsole);
             Fn_Ptr_printColourPairAndCodeInConsole(ColourInfo.colourCode,ColourInfo.majorColour,ColourInfo.minorColour);
@@ -54,8 +55,7 @@ int printColorMapStub(void (*Fn_Ptr_printColourPairAndCodeInConsole)(int,  char*
 
 St_ColourInfo ParseColour(int majorColourIndex, int minorColourIndex)
 {
-    const char* majorColor[] = {"White", "Red", "Black", "Yellow", "Violet"};
-    const char* minorColor[] = {"Blue", "Orange", "Green", "Brown", "Slate"};
+
     St_ColourInfo ColourInfo;
     strcpy(ColourInfo.majorColour, majorColor[majorColourIndex]);
     strcpy(ColourInfo.minorColour, minorColor[minorColourIndex]);
