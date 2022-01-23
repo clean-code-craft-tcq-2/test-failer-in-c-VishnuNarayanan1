@@ -3,6 +3,8 @@
 #include <assert.h>
 
 int InvocationOfPrintInConsole = 0;
+int MaxPossibleMajorColour = 5;
+int MaxPossibleMinorColour = 5;
 void (*Fn_Ptr_printColourPairAndCodeInConsole)(int, char*, char* );
 //Fn_Ptr_printColourPairAndCodeInConsole Ptr_printColourPairAndCodeInConsole;
 int ParseColour(int majorColourIndex, int minorColourIndex);
