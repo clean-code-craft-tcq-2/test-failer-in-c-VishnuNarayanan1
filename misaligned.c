@@ -15,11 +15,10 @@ const char* minorColor[] = {"Blue", "Orange", "Green", "Brown", "Slate"};
 int ColorCodeIndexPrintedInConsole = 1;
 int MaxPossibleMajorColour = 5;
 int MaxPossibleMinorColour = 5;
-St_ColourInfo ParseColour(int majorColourIndex, int minorColourIndex);
+St_ColourInfo ParseColourStub(int majorColourIndex, int minorColourIndex);
 void printColourPairAndCodeInConsoleStub(int colorCode, char* majorColor, char* minorColor);
 int printColorMapStub(void (*Fn_Ptr_printColourPairAndCodeInConsole)(int,int,  char*,  char* ));
-int printColorMapStub(void);
-    
+ 
 
 
 int printColorMap() {
