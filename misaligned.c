@@ -30,13 +30,6 @@ int printColorMap() {
     return i * j;
 }
 
-int main() {
-    int result = printColorMapStub(&printColourPairAndCodeInConsoleStub);
-    assert(result == 25);
-    printf("All is well (maybe!)\n");
-    return 0;
-}
-
 int printColorMapStub(void (*Fn_Ptr_printColourPairAndCodeInConsole)(int,  char*,  char* ))
 {
 
@@ -72,3 +65,13 @@ void printColourPairAndCodeInConsoleStub(int colorCode,  char* majorColor,  char
      printf("%d | %s | %s\n", colorCode ,majorColor, minorColor);
     InvocationOfPrintInConsole++;
 }
+
+
+int main() {
+    void (*Fn_Ptr)(int,  char*,  char*) = printColourPairAndCodeInConsoleStub;
+    int result = printColorMapStub(Fn_Ptr);
+    assert(result == 25);
+    printf("All is well (maybe!)\n");
+    return 0;
+}
+
