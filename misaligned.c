@@ -13,7 +13,7 @@ struct
 {
     char* majorColour;
     char* minorColour;
-    int colourCode
+    int colourCode;
     
 }Struct_ColourInfo;
 
