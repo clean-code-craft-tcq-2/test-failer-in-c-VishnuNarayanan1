@@ -17,7 +17,7 @@ struct
     char* minorColour;
     int colourCode;
     
-}Struct_ColourInfo;
+}St_ColourInfo;
 
 int printColorMap() {
     const char* majorColor[] = {"White", "Red", "Black", "Yellow", "Violet"};
@@ -42,13 +42,13 @@ int printColorMapStub(void (*Fn_Ptr_printColourPairAndCodeInConsole)(int, char*,
 {
 
     int majorColourIndex = 0, minorColourIndex = 0;
-    Struct_ColourInfo ColourInfo;
+    St_ColourInfo ColourInfo;
     for(majorColourIndex = 0; majorColourIndex < 5; majorColourIndex++) 
     {
         for(minorColourIndex = 0; minorColourIndex < 5; minorColourIndex++) 
         {
-            ColourInfo = Fn_Ptr_printColourPairAndCodeInConsole(majorColourIndex,minorColourIndex);
-            Ptr_printColourPairAndCodeInConsole(ColourInfo.colourCode,ColourInfo.majorColour,minorColour);
+            ColourInfo = ParseColour(majorColourIndex,minorColourIndex);
+            Fn_Ptr_printColourPairAndCodeInConsole(ColourInfo.colourCode,ColourInfo.majorColour,minorColour);
         }
     }
     return InvocationOfPrintInConsole;
@@ -58,7 +58,7 @@ int ParseColour(int majorColourIndex, int minorColourIndex)
 {
     const char* majorColor[] = {"White", "Red", "Black", "Yellow", "Violet"};
     const char* minorColor[] = {"Blue", "Orange", "Green", "Brown", "Slate"};
-    Struct_ColourInfo ColourInfo;
+    St_ColourInfo ColourInfo;
     strcpy(ColourInfo.majorColour, majorColor[majorColourIndex]);
     strcpy(ColourInfo.minorColour, minorColor[minorColourIndex]);
     ColourInfo.colourCode = (MaxPossibleMajorColour * majorColourIndex) + minorColourIndex + 1;
