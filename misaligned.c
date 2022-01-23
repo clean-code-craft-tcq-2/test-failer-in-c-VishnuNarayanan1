@@ -5,11 +5,10 @@
 struct St_ColourInfo
 {
     char majorColour[25];
-    char minorColour[25];
-   // int colourCode;
-    
+    char minorColour[25];   
 };
-int InvocationOfPrintInConsole = 0;
+
+int ColorCodeIndexPrintedInConsole = 1;
 int MaxPossibleMajorColour = 5;
 int MaxPossibleMinorColour = 5;
 St_ColourInfo ParseColour(int majorColourIndex, int minorColourIndex);
@@ -46,7 +45,7 @@ int printColorMapStub(void (*Fn_Ptr_printColourPairAndCodeInConsole)(int,int,  c
         }
     }
 
-    return InvocationOfPrintInConsole;
+    return (minorColourIndex + majorColourIndex);
 }
 
 St_ColourInfo ParseColour(int majorColourIndex, int minorColourIndex)
@@ -64,15 +63,14 @@ St_ColourInfo ParseColour(int majorColourIndex, int minorColourIndex)
 void printColourPairAndCodeInConsoleStub(int majorColourIndex, int minorColourIndex,  char* majorColor,  char* minorColor)
 {
     printf("%d | %s | %s\n", majorColourIndex * 5 + minorColourIndex, majorColor, minorColor);
-    // printf("%d | %s | %s\n", colorCode ,majorColor, minorColor);
-    InvocationOfPrintInConsole++;
+    ColorCodeIndexPrintedInConsole++;
 }
 
 
 int main() {
     void (*Fn_Ptr)(int,int,  char*,  char*) = printColourPairAndCodeInConsoleStub;
     int result = printColorMapStub(Fn_Ptr);
-    assert(result == 25);
+    assert(result == ColorCodeIndexPrintedInConsole);
     printf("All is well (maybe!)\n");
     return 0;
 }
