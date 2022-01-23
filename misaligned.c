@@ -40,7 +40,7 @@ int printColorMapStub(void (*Fn_Ptr_printColourPairAndCodeInConsole)(int,  char*
     {
         for(minorColourIndex = 0; minorColourIndex < 5; minorColourIndex++) 
         {
-            ColourInfo = ParseColour(majorColourIndex,minorColourIndex);
+           // ColourInfo = ParseColour(majorColourIndex,minorColourIndex);
                 printf("Print %d", InvocationOfPrintInConsole);
             Fn_Ptr_printColourPairAndCodeInConsole(ColourInfo.colourCode,ColourInfo.majorColour,ColourInfo.minorColour);
         }
