@@ -76,8 +76,8 @@ int main() {
     assert(test_colourInfo.majorColour == majorColor[0]);
     assert(test_colourInfo.majorColour == majorColor[0]);
    // assert(test_colourInfo.colourCode == 1);
-   // int result = printColorMapStub(Fn_Ptr);
-    //assert(result == ColorCodeIndexPrintedInConsole);
+    int result = printColorMapStub(Fn_Ptr);
+    assert(result == 25);
     printf("All is well (maybe!)\n");
     return 0;
 }
