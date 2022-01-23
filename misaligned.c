@@ -48,7 +48,7 @@ int printColorMapStub(void (*Fn_Ptr_printColourPairAndCodeInConsole)(int,int, ch
         }
     }
 
-    return (minorColourIndex + majorColourIndex);
+    return (minorColourIndex * majorColourIndex);
 }
 
 St_ColourInfo ParseColourStub(int majorColourIndex, int minorColourIndex)
@@ -75,6 +75,9 @@ int main() {
    // assert(test_colourInfo.majorColour == majorColor[0]);
     printf(" Test %s", test_colourInfo.majorColour);
      printf("\n Test %s", majorColor[0]);
+        printf(" Test %s", test_colourInfo.minorColour);
+     printf("\n Test %s", minorColor[0]);
+    printf("\n Test %d", test_colourInfo.colourCode);
    // assert(test_colourInfo.minorColour == minorColor[0]);
    // assert(test_colourInfo.colourCode == 1);
     int result = printColorMapStub(Fn_Ptr);
