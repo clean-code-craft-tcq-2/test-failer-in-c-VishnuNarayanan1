@@ -4,8 +4,8 @@
 
 struct St_ColourInfo
 {
-    char* majorColour;
-    char* minorColour;
+    char majorColour[25];
+    char minorColour[25];
     int colourCode;
     
 };
