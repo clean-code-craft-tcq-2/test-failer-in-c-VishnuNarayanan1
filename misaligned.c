@@ -12,7 +12,6 @@ struct St_ColourInfo
 int InvocationOfPrintInConsole = 0;
 int MaxPossibleMajorColour = 5;
 int MaxPossibleMinorColour = 5;
-//void (*Fn_Ptr_printColourPairAndCodeInConsole)(int, char*, char* );
 St_ColourInfo ParseColour(int majorColourIndex, int minorColourIndex);
 void printColourPairAndCodeInConsoleStub(int colorCode, char* majorColor, char* minorColor);
 int printColorMapStub(void (*Fn_Ptr_printColourPairAndCodeInConsole)(int,  char*,  char* ));
@@ -49,10 +48,11 @@ int printColorMapStub(void (*Fn_Ptr_printColourPairAndCodeInConsole)(int,  char*
         for(minorColourIndex = 0; minorColourIndex < 5; minorColourIndex++) 
         {
             ColourInfo = ParseColour(majorColourIndex,minorColourIndex);
+                printf("Print %d", InvocationOfPrintInConsole);
             Fn_Ptr_printColourPairAndCodeInConsole(ColourInfo.colourCode,ColourInfo.majorColour,ColourInfo.minorColour);
         }
     }
-    printf("Print %d", InvocationOfPrintInConsole);
+
     return InvocationOfPrintInConsole;
 }
 
