@@ -45,10 +45,10 @@ int printColorMapStub(void)
         {
             ColourInfo.colourCode = 1;
             ColourInfo = ParseColour(majorColourIndex,minorColourIndex);
-            printf("Print %d", InvocationOfPrintInConsole);
-            printf("Print %d", ColourInfo.colourCode);
-            printf("Print %d", ColourInfo.majorColour);
-            printf("Print %d", ColourInfo.minorColour);
+            printf("\nPrint %d", InvocationOfPrintInConsole);
+            printf("\nPrint %d", ColourInfo.colourCode);
+            printf("\nPrint %s", ColourInfo.majorColour);
+            printf("\nPrint %s", ColourInfo.minorColour);
            // Fn_Ptr_printColourPairAndCodeInConsole(ColourInfo.colourCode,ColourInfo.majorColour,ColourInfo.minorColour);
         }
     }
