@@ -72,13 +72,11 @@ int main() {
     St_ColourInfo test_colourInfo;
     void (*Fn_Ptr)(int,int,  char*,  char*) = printColourPairAndCodeInConsoleStub;
     test_colourInfo = ParseColourStub(0,0);
+    assert(test_colourInfo.colourCode == 1);
     assert(test_colourInfo.majorColour == majorColor[0]);
     assert(test_colourInfo.minorColour == minorColor[0]);
-    assert(test_colourInfo.colourCode == 1);
     int result = printColorMapStub(Fn_Ptr);
-     printf("\n Test %d", result);
-     printf("\n Test %d", ColorCodeIndexPrintedInConsole);
-   // assert(result == 25);
+    assert(result == ColorCodeIndexPrintedInConsole);
     printf("All is well (maybe!)\n");
     return 0;
 }
