@@ -42,11 +42,9 @@ int printColorMapStub(void (*Fn_Ptr_printColourPairAndCodeInConsole)(int,  char*
         for(minorColourIndex = 0; minorColourIndex < 5; minorColourIndex++) 
         {
             ColourInfo.colourCode = 1;
-            strcpy(ColourInfo.majorColour,majorColor[1]);
-            strcpy(ColourInfo.minorColour,minorColor[1]);
-           // ColourInfo = ParseColour(majorColourIndex,minorColourIndex);
-                printf("Print %d", InvocationOfPrintInConsole);
-            Fn_Ptr_printColourPairAndCodeInConsole(ColourInfo.colourCode,ColourInfo.majorColour,ColourInfo.minorColour);
+            ColourInfo = ParseColour(majorColourIndex,minorColourIndex);
+            printf("Print %d", InvocationOfPrintInConsole);
+           // Fn_Ptr_printColourPairAndCodeInConsole(ColourInfo.colourCode,ColourInfo.majorColour,ColourInfo.minorColour);
         }
     }
 
