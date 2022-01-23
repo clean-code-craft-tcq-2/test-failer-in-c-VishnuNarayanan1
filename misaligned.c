@@ -6,7 +6,7 @@ struct St_ColourInfo
 {
     char majorColour[25];
     char minorColour[25];
-    int colourCode;
+   // int colourCode;
     
 };
 int InvocationOfPrintInConsole = 0;
@@ -14,11 +14,10 @@ int MaxPossibleMajorColour = 5;
 int MaxPossibleMinorColour = 5;
 St_ColourInfo ParseColour(int majorColourIndex, int minorColourIndex);
 void printColourPairAndCodeInConsoleStub(int colorCode, char* majorColor, char* minorColor);
-int printColorMapStub(void (*Fn_Ptr_printColourPairAndCodeInConsole)(int,  char*,  char* ));
+int printColorMapStub(void (*Fn_Ptr_printColourPairAndCodeInConsole)(int,int,  char*,  char* ));
 int printColorMapStub(void);
     
-    const char* majorColor[] = {"White", "Red", "Black", "Yellow", "Violet"};
-    const char* minorColor[] = {"Blue", "Orange", "Green", "Brown", "Slate"};
+
 
 int printColorMap() {
     const char* majorColor[] = {"White", "Red", "Black", "Yellow", "Violet"};
@@ -32,7 +31,7 @@ int printColorMap() {
     return i * j;
 }
 
-int printColorMapStub(void (*Fn_Ptr_printColourPairAndCodeInConsole)(int,  char*,  char* ))
+int printColorMapStub(void (*Fn_Ptr_printColourPairAndCodeInConsole)(int,int,  char*,  char* ))
 {
 
     int majorColourIndex = 0; 
@@ -44,10 +43,6 @@ int printColorMapStub(void (*Fn_Ptr_printColourPairAndCodeInConsole)(int,  char*
         {
             ColourInfo.colourCode = 1;
             ColourInfo = ParseColour(majorColourIndex,minorColourIndex);
-            printf("\nPrint %d", InvocationOfPrintInConsole);
-            printf("\nPrint %d", ColourInfo.colourCode);
-            printf("\nPrint %s", ColourInfo.majorColour);
-            printf("\nPrint %s", ColourInfo.minorColour);
             Fn_Ptr_printColourPairAndCodeInConsole(ColourInfo.colourCode,ColourInfo.majorColour,ColourInfo.minorColour);
         }
     }
@@ -57,23 +52,26 @@ int printColorMapStub(void (*Fn_Ptr_printColourPairAndCodeInConsole)(int,  char*
 
 St_ColourInfo ParseColour(int majorColourIndex, int minorColourIndex)
 {
-
+    const char* majorColor[] = {"White", "Red", "Black", "Yellow", "Violet"};
+    const char* minorColor[] = {"Blue", "Orange", "Green", "Brown", "Slate"};
+    
     St_ColourInfo ColourInfo;
     strcpy(ColourInfo.majorColour, majorColor[majorColourIndex]);
     strcpy(ColourInfo.minorColour, minorColor[minorColourIndex]);
-    ColourInfo.colourCode = (MaxPossibleMajorColour * majorColourIndex) + minorColourIndex + 1;
+    //ColourInfo.colourCode = (MaxPossibleMajorColour * majorColourIndex) + minorColourIndex + 1;
     return ColourInfo;   
 }
 
-void printColourPairAndCodeInConsoleStub(int colorCode,  char* majorColor,  char* minorColor)
+void printColourPairAndCodeInConsoleStub(int majorColourIndex, int minorColourIndex,  char* majorColor,  char* minorColor)
 {
-     printf("%d | %s | %s\n", colorCode ,majorColor, minorColor);
+    printf("%d | %s | %s\n", majorColourIndex * 5 + minorColourIndex, majorColor[i], minorColor[i]);
+    // printf("%d | %s | %s\n", colorCode ,majorColor, minorColor);
     InvocationOfPrintInConsole++;
 }
 
 
 int main() {
-    void (*Fn_Ptr)(int,  char*,  char*) = printColourPairAndCodeInConsoleStub;
+    void (*Fn_Ptr)(int,int,  char*,  char*) = printColourPairAndCodeInConsoleStub;
     int result = printColorMapStub(Fn_Ptr);
    // int result = printColorMapStub();
     assert(result == 25);
