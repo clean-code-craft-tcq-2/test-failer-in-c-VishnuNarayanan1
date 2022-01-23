@@ -41,14 +41,15 @@ int main() {
 int printColorMapStub(void (*Fn_Ptr_printColourPairAndCodeInConsole)(int, char*, char* ))
 {
 
-    int majorColourIndex = 0, minorColourIndex = 0;
+    int majorColourIndex = 0; 
+    int minorColourIndex = 0;
     St_ColourInfo ColourInfo;
     for(majorColourIndex = 0; majorColourIndex < 5; majorColourIndex++) 
     {
         for(minorColourIndex = 0; minorColourIndex < 5; minorColourIndex++) 
         {
             ColourInfo = ParseColour(majorColourIndex,minorColourIndex);
-            Fn_Ptr_printColourPairAndCodeInConsole(ColourInfo.colourCode,ColourInfo.majorColour,minorColour);
+            Fn_Ptr_printColourPairAndCodeInConsole(ColourInfo.colourCode,ColourInfo.majorColour,ColourInfo.minorColour);
         }
     }
     return InvocationOfPrintInConsole;
