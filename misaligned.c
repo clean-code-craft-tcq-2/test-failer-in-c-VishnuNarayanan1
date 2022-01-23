@@ -41,9 +41,8 @@ int printColorMapStub(void (*Fn_Ptr_printColourPairAndCodeInConsole)(int,int,  c
     {
         for(minorColourIndex = 0; minorColourIndex < 5; minorColourIndex++) 
         {
-            ColourInfo.colourCode = 1;
             ColourInfo = ParseColour(majorColourIndex,minorColourIndex);
-            Fn_Ptr_printColourPairAndCodeInConsole(ColourInfo.colourCode,ColourInfo.majorColour,ColourInfo.minorColour);
+            Fn_Ptr_printColourPairAndCodeInConsole(majorColourIndex,minorColourIndex,ColourInfo.majorColour,ColourInfo.minorColour);
         }
     }
 
@@ -64,7 +63,7 @@ St_ColourInfo ParseColour(int majorColourIndex, int minorColourIndex)
 
 void printColourPairAndCodeInConsoleStub(int majorColourIndex, int minorColourIndex,  char* majorColor,  char* minorColor)
 {
-    printf("%d | %s | %s\n", majorColourIndex * 5 + minorColourIndex, majorColor[i], minorColor[i]);
+    printf("%d | %s | %s\n", majorColourIndex * 5 + minorColourIndex, majorColor, minorColor);
     // printf("%d | %s | %s\n", colorCode ,majorColor, minorColor);
     InvocationOfPrintInConsole++;
 }
@@ -73,7 +72,6 @@ void printColourPairAndCodeInConsoleStub(int majorColourIndex, int minorColourIn
 int main() {
     void (*Fn_Ptr)(int,int,  char*,  char*) = printColourPairAndCodeInConsoleStub;
     int result = printColorMapStub(Fn_Ptr);
-   // int result = printColorMapStub();
     assert(result == 25);
     printf("All is well (maybe!)\n");
     return 0;
