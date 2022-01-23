@@ -12,7 +12,7 @@ struct St_ColourInfo
 const char* majorColor[] = {"White", "Red", "Black", "Yellow", "Violet"};
 const char* minorColor[] = {"Blue", "Orange", "Green", "Brown", "Slate"};
 
-int ColorCodeIndexPrintedInConsole = 1;
+int ColorCodeIndexToBePrintedInConsole = 1;
 int MaxPossibleMajorColour = 5;
 int MaxPossibleMinorColour = 5;
 St_ColourInfo ParseColourStub(int majorColourIndex, int minorColourIndex);
@@ -20,7 +20,7 @@ void printColourPairAndCodeInConsoleStub(int colorCode, char* majorColor, char* 
 int printColorMapStub(void (*Fn_Ptr_printColourPairAndCodeInConsole)(int,int,  char*,  char* ));
  
 
-
+// Source code as given 
 int printColorMap() {
     const char* majorColor[] = {"White", "Red", "Black", "Yellow", "Violet"};
     const char* minorColor[] = {"Blue", "Orange", "Green", "Brown", "Slate"};
@@ -33,6 +33,7 @@ int printColorMap() {
     return i * j;
 }
 
+// All the following code are either to show case the segregation of responsibilities without modifying the inherent bug in the source code given
 int printColorMapStub(void (*Fn_Ptr_printColourPairAndCodeInConsole)(int,int, char*,  char* ))
 {
 
@@ -64,19 +65,22 @@ St_ColourInfo ParseColourStub(int majorColourIndex, int minorColourIndex)
 void printColourPairAndCodeInConsoleStub(int majorColourIndex, int minorColourIndex,  char* majorColor,  char* minorColor)
 {
     printf("%d | %s | %s\n", majorColourIndex * 5 + minorColourIndex, majorColor, minorColor);
-    ColorCodeIndexPrintedInConsole++;
+    ColorCodeIndexToBePrintedInConsole++;
 }
 
 
+// Main comprising of test cases that could catch the bug
 int main() {
     St_ColourInfo test_colourInfo;
+    int test_majorColourIndex = 0;
+    int test_minorColourIndex = 0;
     void (*Fn_Ptr)(int,int,  char*,  char*) = printColourPairAndCodeInConsoleStub;
-    test_colourInfo = ParseColourStub(0,0);
-    assert(test_colourInfo.colourCode == 1);
-    assert(strcmp(test_colourInfo.majorColour,majorColor[0]) == 0);
-    assert(strcmp(test_colourInfo.minorColour,minorColor[0]) == 0);
+    test_colourInfo = ParseColourStub(test_majorColourIndex,test_minorColourIndex);
+    assert(test_colourInfo.colourCode == (test_majorColourIndex * 5 + test_minorColourIndex))
+    assert(strcmp(test_colourInfo.majorColour,majorColor[test_majorColourIndex0]) == 0);
+    assert(strcmp(test_colourInfo.minorColour,minorColor[test_minorColourIndex]) == 0);
     int result = printColorMapStub(Fn_Ptr);
-    assert(result == ColorCodeIndexPrintedInConsole);
+    assert(result == ColorCodeIndexToBePrintedInConsole);
     printf("All is well (maybe!)\n");
     return 0;
 }
