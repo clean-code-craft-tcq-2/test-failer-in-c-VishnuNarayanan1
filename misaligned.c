@@ -5,19 +5,18 @@
 int InvocationOfPrintInConsole = 0;
 int MaxPossibleMajorColour = 5;
 int MaxPossibleMinorColour = 5;
-void (*Fn_Ptr_printColourPairAndCodeInConsole)(int, char*, char* );
-//Fn_Ptr_printColourPairAndCodeInConsole Ptr_printColourPairAndCodeInConsole;
+//void (*Fn_Ptr_printColourPairAndCodeInConsole)(int, char*, char* );
 int ParseColour(int majorColourIndex, int minorColourIndex);
 void printColourPairAndCodeInConsoleStub(int colorCode, char* majorColor, char* minorColor);
 int printColorMapStub(void (*Fn_Ptr_printColourPairAndCodeInConsole)(int, char*, char* ));
     
-struct 
+struct St_ColourInfo
 {
     char* majorColour;
     char* minorColour;
     int colourCode;
     
-}St_ColourInfo;
+};
 
 int printColorMap() {
     const char* majorColor[] = {"White", "Red", "Black", "Yellow", "Violet"};
