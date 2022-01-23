@@ -70,7 +70,7 @@ void printColourPairAndCodeInConsoleStub(int majorColourIndex, int minorColourIn
 
 int main() {
     St_ColourInfo test_colourInfo;
-    char* test[25];
+    char test[25];
     void (*Fn_Ptr)(int,int,  char*,  char*) = printColourPairAndCodeInConsoleStub;
     test_colourInfo = ParseColourStub(0,0);
     assert(test_colourInfo.colourCode == 1);
