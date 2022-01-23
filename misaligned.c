@@ -1,11 +1,12 @@
 #include <stdio.h>
+#include <string.h>
 #include <assert.h>
 
 int InvocationOfPrintInConsole = 0;
 void (*Fn_Ptr_printColourPairAndCodeInConsole)(int, char*, char* );
 Fn_Ptr_printColourPairAndCodeInConsole Ptr_printColourPairAndCodeInConsole;
 int ParseColour(int majorColourIndex, int minorColourIndex);
-void printColourPairAndCodeInConsole(int colorCode, char* majorColor, char* minorColor);
+void printColourPairAndCodeInConsoleStub(int colorCode, char* majorColor, char* minorColor);
 int printColorMapStub(Ptr_printColourPairAndCodeInConsole);
     
 struct 
@@ -29,7 +30,7 @@ int printColorMap() {
 }
 
 int main() {
-    int result = printColorMapStub(printColourPairAndCodeInConsole);
+    int result = printColorMapStub(printColourPairAndCodeInConsoleStub);
     assert(result == 25);
     printf("All is well (maybe!)\n");
     return 0;
@@ -62,7 +63,8 @@ int ParseColour(int majorColourIndex, int minorColourIndex)
     return ColourInfo;   
 }
 
-void printColourPairAndCodeInConsole(int colorCode, char* majorColor, char* minorColor)
+void printColourPairAndCodeInConsoleStub(int colorCode, char* majorColor, char* minorColor)
 {
+     printf("%d | %s | %s\n", colorCode majorColor, minorColor]);
     InvocationOfPrintInConsole++;
 }
