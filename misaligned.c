@@ -33,7 +33,7 @@ int printColorMap() {
 }
 
 //int printColorMapStub(void (*Fn_Ptr_printColourPairAndCodeInConsole)(int,  char*,  char* ))
-int printColorMapStub(void (void)
+int printColorMapStub(void)
 {
 
     int majorColourIndex = 0; 
