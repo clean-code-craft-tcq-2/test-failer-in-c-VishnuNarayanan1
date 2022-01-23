@@ -65,6 +65,6 @@ int ParseColour(int majorColourIndex, int minorColourIndex)
 
 void printColourPairAndCodeInConsoleStub(int colorCode, char* majorColor, char* minorColor)
 {
-     printf("%d | %s | %s\n", colorCode majorColor, minorColor]);
+     printf("%d | %s | %s\n", colorCode ,majorColor, minorColor);
     InvocationOfPrintInConsole++;
 }
