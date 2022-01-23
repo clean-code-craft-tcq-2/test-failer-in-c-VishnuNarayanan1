@@ -52,6 +52,7 @@ int printColorMapStub(void (*Fn_Ptr_printColourPairAndCodeInConsole)(int,  char*
             Fn_Ptr_printColourPairAndCodeInConsole(ColourInfo.colourCode,ColourInfo.majorColour,ColourInfo.minorColour);
         }
     }
+    printf("Print %d", InvocationOfPrintInConsole);
     return InvocationOfPrintInConsole;
 }
 
