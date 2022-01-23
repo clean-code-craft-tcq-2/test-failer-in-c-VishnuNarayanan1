@@ -6,8 +6,11 @@ struct St_ColourInfo
 {
     char majorColour[25];
     char minorColour[25];  
-    char colorCode;
+    char colourCode;
 };
+
+const char* majorColor[] = {"White", "Red", "Black", "Yellow", "Violet"};
+const char* minorColor[] = {"Blue", "Orange", "Green", "Brown", "Slate"};
 
 int ColorCodeIndexPrintedInConsole = 1;
 int MaxPossibleMajorColour = 5;
@@ -51,9 +54,7 @@ int printColorMapStub(void (*Fn_Ptr_printColourPairAndCodeInConsole)(int,int, ch
 
 St_ColourInfo ParseColourStub(int majorColourIndex, int minorColourIndex)
 {
-    const char* majorColor[] = {"White", "Red", "Black", "Yellow", "Violet"};
-    const char* minorColor[] = {"Blue", "Orange", "Green", "Brown", "Slate"};
-    
+   
     St_ColourInfo ColourInfo;
     strcpy(ColourInfo.majorColour, majorColor[majorColourIndex]);
     strcpy(ColourInfo.minorColour, minorColor[minorColourIndex]);
