@@ -62,6 +62,8 @@ St_ColourInfo ParseColourStub(int majorColourIndex, int minorColourIndex)
     return ColourInfo;   
 }
 
+// Ideally this print should take ColourInfo.colourCode to print the colour code.
+// But just to replicate the nature of original source code :
 void printColourPairAndCodeInConsoleStub(int majorColourIndex, int minorColourIndex,  char* majorColor,  char* minorColor)
 {
     printf("%d | %s | %s\n", majorColourIndex * 5 + minorColourIndex, majorColor, minorColor);
