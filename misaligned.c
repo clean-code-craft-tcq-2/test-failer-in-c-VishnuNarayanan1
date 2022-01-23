@@ -4,10 +4,10 @@
 
 int InvocationOfPrintInConsole = 0;
 void (*Fn_Ptr_printColourPairAndCodeInConsole)(int, char*, char* );
-Fn_Ptr_printColourPairAndCodeInConsole Ptr_printColourPairAndCodeInConsole;
+//Fn_Ptr_printColourPairAndCodeInConsole Ptr_printColourPairAndCodeInConsole;
 int ParseColour(int majorColourIndex, int minorColourIndex);
 void printColourPairAndCodeInConsoleStub(int colorCode, char* majorColor, char* minorColor);
-int printColorMapStub(Ptr_printColourPairAndCodeInConsole);
+int printColorMapStub(void (*Fn_Ptr_printColourPairAndCodeInConsole)(int, char*, char* ));
     
 struct 
 {
@@ -36,7 +36,7 @@ int main() {
     return 0;
 }
 
-int printColorMapStub(Ptr_printColourPairAndCodeInConsole)
+int printColorMapStub(void (*Fn_Ptr_printColourPairAndCodeInConsole)(int, char*, char* ))
 {
 
     int majorColourIndex = 0, minorColourIndex = 0;
@@ -45,7 +45,7 @@ int printColorMapStub(Ptr_printColourPairAndCodeInConsole)
     {
         for(minorColourIndex = 0; minorColourIndex < 5; minorColourIndex++) 
         {
-            ColourInfo = ParseColour(majorColourIndex,minorColourIndex);
+            ColourInfo = Fn_Ptr_printColourPairAndCodeInConsole(majorColourIndex,minorColourIndex);
             Ptr_printColourPairAndCodeInConsole(ColourInfo.colourCode,ColourInfo.majorColour,minorColour);
         }
     }
