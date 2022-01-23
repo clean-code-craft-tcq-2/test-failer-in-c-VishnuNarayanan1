@@ -1,6 +1,21 @@
 #include <stdio.h>
 #include <assert.h>
 
+int InvocationOfPrintInConsole = 0;
+void (*Fn_Ptr_printColourPairAndCodeInConsole)(int, char*, char* );
+Fn_Ptr_printColourPairAndCodeInConsole Ptr_printColourPairAndCodeInConsole;
+int ParseColour(int majorColourIndex, int minorColourIndex);
+void printColourPairAndCodeInConsole(int colorCode, char* majorColor, char* minorColor);
+int printColorMapStub(Ptr_printColourPairAndCodeInConsole);
+    
+struct 
+{
+    char* majorColour;
+    char* minorColour;
+    int colourCode
+    
+}Struct_ColourInfo;
+
 int printColorMap() {
     const char* majorColor[] = {"White", "Red", "Black", "Yellow", "Violet"};
     const char* minorColor[] = {"Blue", "Orange", "Green", "Brown", "Slate"};
@@ -14,8 +29,40 @@ int printColorMap() {
 }
 
 int main() {
-    int result = printColorMap();
+    int result = printColorMapStub(printColourPairAndCodeInConsole);
     assert(result == 25);
     printf("All is well (maybe!)\n");
     return 0;
+}
+
+int printColorMapStub(Ptr_printColourPairAndCodeInConsole)
+{
+
+    int majorColourIndex = 0, minorColourIndex = 0;
+    Struct_ColourInfo ColourInfo;
+    for(majorColourIndex = 0; majorColourIndex < 5; majorColourIndex++) 
+    {
+        for(minorColourIndex = 0; minorColourIndex < 5; minorColourIndex++) 
+        {
+            ColourInfo = ParseColour(majorColourIndex,minorColourIndex);
+            Ptr_printColourPairAndCodeInConsole(ColourInfo.colourCode,ColourInfo.majorColour,minorColour);
+        }
+    }
+    return InvocationOfPrintInConsole;
+}
+
+int ParseColour(int majorColourIndex, int minorColourIndex)
+{
+    const char* majorColor[] = {"White", "Red", "Black", "Yellow", "Violet"};
+    const char* minorColor[] = {"Blue", "Orange", "Green", "Brown", "Slate"};
+    Struct_ColourInfo ColourInfo;
+    strcpy(ColourInfo.majorColour, majorColor[majorColourIndex]);
+    strcpy(ColourInfo.minorColour, minorColor[minorColourIndex]);
+    ColourInfo.colourCode = (MaxPossibleMajorColour * majorColourIndex) + minorColourIndex + 1;
+    return ColourInfo;   
+}
+
+void printColourPairAndCodeInConsole(int colorCode, char* majorColor, char* minorColor)
+{
+    InvocationOfPrintInConsole++;
 }
