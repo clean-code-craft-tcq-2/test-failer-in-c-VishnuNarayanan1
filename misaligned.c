@@ -78,7 +78,9 @@ int main() {
    // assert(test_colourInfo.minorColour == minorColor[0]);
    // assert(test_colourInfo.colourCode == 1);
     int result = printColorMapStub(Fn_Ptr);
-    assert(result == 25);
+     printf("\n Test %d", result);
+     printf("\n Test %d", ColorCodeIndexPrintedInConsole);
+   // assert(result == 25);
     printf("All is well (maybe!)\n");
     return 0;
 }
