@@ -73,7 +73,7 @@ int main() {
     void (*Fn_Ptr)(int,int,  char*,  char*) = printColourPairAndCodeInConsoleStub;
     test_colourInfo = ParseColourStub(0,0);
     assert(test_colourInfo.colourCode == 1);
-    assert(strcmp(test_colourInfo.minorColour,majorColor[0]) == 0);
+    assert(strcmp(test_colourInfo.majorColour,majorColor[0]) == 0);
     assert(strcmp(test_colourInfo.minorColour,minorColor[0]) == 0);
     int result = printColorMapStub(Fn_Ptr);
     assert(result == ColorCodeIndexPrintedInConsole);
