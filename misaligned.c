@@ -70,10 +70,12 @@ void printColourPairAndCodeInConsoleStub(int majorColourIndex, int minorColourIn
 
 int main() {
     St_ColourInfo test_colourInfo;
+    char* test[25];
     void (*Fn_Ptr)(int,int,  char*,  char*) = printColourPairAndCodeInConsoleStub;
     test_colourInfo = ParseColourStub(0,0);
     assert(test_colourInfo.colourCode == 1);
-    assert(test_colourInfo.majorColour == majorColor[0]);
+    strcpy(test,test_colourInfo.majorColour);
+    assert(test == majorColor[0]);
     assert(test_colourInfo.minorColour == minorColor[0]);
     int result = printColorMapStub(Fn_Ptr);
     assert(result == ColorCodeIndexPrintedInConsole);
