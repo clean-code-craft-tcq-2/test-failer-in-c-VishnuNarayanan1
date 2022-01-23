@@ -77,7 +77,7 @@ int main() {
     void (*Fn_Ptr)(int,int,  char*,  char*) = printColourPairAndCodeInConsoleStub;
     test_colourInfo = ParseColourStub(test_majorColourIndex,test_minorColourIndex);
     assert(test_colourInfo.colourCode == (test_majorColourIndex * 5 + test_minorColourIndex))
-    assert(strcmp(test_colourInfo.majorColour,majorColor[test_majorColourIndex0]) == 0);
+    assert(strcmp(test_colourInfo.majorColour,majorColor[test_majorColourIndex]) == 0);
     assert(strcmp(test_colourInfo.minorColour,minorColor[test_minorColourIndex]) == 0);
     int result = printColorMapStub(Fn_Ptr);
     assert(result == ColorCodeIndexToBePrintedInConsole);
