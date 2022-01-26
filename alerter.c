@@ -15,7 +15,7 @@ int networkAlert(float celcius) {
     return 200;
 }
 
-void alertInCelcius(float farenheit, int (*Fn_Ptr_NetworkAlert)(float) {
+void alertInCelcius(float farenheit, int (*Fn_Ptr_NetworkAlert)(float)) {
     float celcius = (farenheit - 32) * 5 / 9;
     int returnCode = Fn_Ptr_NetworkAlert(celcius);
     if (returnCode != 200) {
@@ -44,7 +44,8 @@ int networkAlertStub(float celcius)
     }
     else
     {
-        alertCode = 0xff // Invalid use case should also be captured, (this catches the returnCode != 200 condition in the code, which cannot be the sole condition for counting the alerts)
+        alertCode = 0xff ;
+       // Invalid use case should also be captured, (this catches the returnCode != 200 condition in the code, which cannot be the sole condition for counting the alerts)
     }
     return alertCode;
 }
