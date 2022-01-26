@@ -32,7 +32,7 @@ void alertInCelcius(float farenheit, int (*Fn_Ptr_NetworkAlert)(float)) {
 int networkAlertStub(float celcius) 
 {
     int alertCode = 0;
-    if((celcius >= UpperThresholdLimitInCelcius) || (celcius <= LowerThresholdLimitInCelcius) && (MinimumAcceptableCelciusInWorkingEnvironment >= MinimumAcceptableCelciusInWorkingEnvironment) &&
+    if(((celcius >= UpperThresholdLimitInCelcius) || (celcius <= LowerThresholdLimitInCelcius)) && (MinimumAcceptableCelciusInWorkingEnvironment >= MinimumAcceptableCelciusInWorkingEnvironment) &&
         (celcius <= MaximumAcceptableCelciusInWorkingEnvironemnt))
     {
         printf("ALERT: Temperature is %.1f celcius.\n", celcius);
