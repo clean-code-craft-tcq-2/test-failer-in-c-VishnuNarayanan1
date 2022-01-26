@@ -12,7 +12,7 @@ struct St_ColourInfo
 const char* majorColor[] = {"White", "Red", "Black", "Yellow", "Violet"};
 const char* minorColor[] = {"Blue", "Orange", "Green", "Brown", "Slate"};
 
-int ColorCodeIndexToBePrintedInConsole = 1;
+int ColorCodeIndexToBePrintedInConsole = 0;
 int MaxPossibleMajorColour = 5;
 int MaxPossibleMinorColour = 5;
 St_ColourInfo ParseColourStub(int majorColourIndex, int minorColourIndex);
@@ -77,14 +77,19 @@ int main() {
     int test_majorColourIndex = 0;
     int test_minorColourIndex = 0;
     int test_expectedColourCode = 0;
+    ColorCodeIndexToBePrintedInConsole = 0;
     void (*Fn_Ptr)(int,int,  char*,  char*) = printColourPairAndCodeInConsoleStub;
+     // Test to see if the expected colour code is mapped against the colour indices passed.
+    // This is just a sample, similar checks can be made randomly for various colours.
     test_colourInfo = ParseColourStub(test_majorColourIndex,test_minorColourIndex);
     test_expectedColourCode = (test_majorColourIndex * 5 + test_minorColourIndex);
     assert(test_colourInfo.colourCode == test_expectedColourCode);
     assert(strcmp(test_colourInfo.majorColour,majorColor[test_majorColourIndex]) == 0);
     assert(strcmp(test_colourInfo.minorColour,minorColor[test_minorColourIndex]) == 0);
+    // Test if print action has taken place number of times this function is called
     int result = printColorMapStub(Fn_Ptr);
     assert(result == ColorCodeIndexToBePrintedInConsole);
+    ColorCodeIndexToBePrintedInConsole = 0;
     printf("All is well (maybe!)\n");
     return 0;
 }
