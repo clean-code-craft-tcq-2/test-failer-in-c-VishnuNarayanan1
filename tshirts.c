@@ -13,6 +13,8 @@ char size(int cms) {
     return sizeName;
 }
 
+             /********************* Test environemnt **************/
+
 int main() {
     assert(size(-1) == '\0');
     assert(size(37) == 'S');
