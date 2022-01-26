@@ -4,6 +4,8 @@
 int alertFailureCount = 0;
 int UpperThresholdLimitInCelcius = 200;
 int LowerThresholdLimitInCelcius = 100;
+int MinimumAcceptableCelciusInWorkingEnvironment = 1;
+int MaximumAcceptableCelciusInWorkingEnvironemnt = 399;
 
 int networkAlert(float celcius) {
     printf("ALERT: Temperature is %.1f celcius.\n", celcius);
@@ -25,12 +27,13 @@ void alertInCelcius(float farenheit, int (*Fn_Ptr_NetworkAlert)(float) {
     }
 }
 
-                    // Test environment 
+                    /*************** Test environment ***************/
                     
 int networkAlertStub(float celcius) 
 {
     int alertCode = 0;
-    if((celcius >= UpperThresholdLimitInCelcius) || (celcius <= LowerThresholdLimitInCelcius)) && (celcius > 0))
+    if((celcius >= UpperThresholdLimitInCelcius) || (celcius <= LowerThresholdLimitInCelcius)) && (MinimumAcceptableCelciusInWorkingEnvironment >= MinimumAcceptableCelciusInWorkingEnvironment) &&
+        (celcius <= MaximumAcceptableCelciusInWorkingEnvironemnt))
     {
         printf("ALERT: Temperature is %.1f celcius.\n", celcius);
         alertCode = 500;
@@ -41,18 +44,18 @@ int networkAlertStub(float celcius)
     }
     else
     {
-        alertCode = 0xff // Invalid use case
+        alertCode = 0xff // Invalid use case should also be captured, (this catches the returnCode != 200 condition in the code, which cannot be the sole condition for counting the alerts)
     }
     return alertCode;
 }
                     
 int main() {
     int (*Fn_Ptr_NetworkAlert)(float) = networkAlertStub;
-    alertInCelcius(400.5,Fn_Ptr_NetworkAlert);
-    alertInCelcius(303.6,Fn_Ptr_NetworkAlert);
-    alertInCelcius(50,Fn_Ptr_NetworkAlert);
-    alertInCelcius(1000,Fn_Ptr_NetworkAlert);
-    alertInCelcius(0,Fn_Ptr_NetworkAlert);
+    alertInCelcius(400.5,Fn_Ptr_NetworkAlert); // Celcius 204.7 -> Alert
+    alertInCelcius(303.6,Fn_Ptr_NetworkAlert); // Celcius 150.8 -> Don't Alert
+    alertInCelcius(50,Fn_Ptr_NetworkAlert); // Celcius 10 -> Alert
+    alertInCelcius(752,Fn_Ptr_NetworkAlert); // Celcius 400 -> Invalid use case
+    alertInCelcius(0,Fn_Ptr_NetworkAlert); // Celcius 32 -> Invalid use case
     assert(2,alertFailureCount);
     printf("%d alerts failed.\n", alertFailureCount);
     printf("All is well (maybe!)\n");
