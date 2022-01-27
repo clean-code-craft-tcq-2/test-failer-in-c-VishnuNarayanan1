@@ -34,7 +34,7 @@ void alertInCelcius(float farenheit, float (*Fn_Ptr_FarenheitToCelcius) (float),
 float ReturnCelciusWithInputFarenheitStub(float farenheit)
 {
     float celcius = (farenheit - 32) * 5 / 9;
-    return celcius
+    return celcius;
 }
 
                     
