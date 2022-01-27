@@ -15,8 +15,9 @@ int networkAlert(float celcius) {
     return 200;
 }
 
-void alertInCelcius(float farenheit, int (*Fn_Ptr_NetworkAlert)(float)) {
-    float celcius = (farenheit - 32) * 5 / 9;
+void alertInCelcius(float farenheit, float (*Fn_Ptr_FarenheitToCelcius) (float),int (*Fn_Ptr_NetworkAlert)(float)) 
+{
+    float celcius = Fn_Ptr_FarenheitToCelcius(farenheit);
     int returnCode = Fn_Ptr_NetworkAlert(celcius);
     if (returnCode != 200) {
         // non-ok response is not an error! Issues happen in life!
@@ -27,7 +28,15 @@ void alertInCelcius(float farenheit, int (*Fn_Ptr_NetworkAlert)(float)) {
     }
 }
 
+
                     /*************** Test environment ***************/
+
+float ReturnCelciusWithInputFarenheitStub(float farenheit)
+{
+    float celcius = (farenheit - 32) * 5 / 9;
+    return celcius
+}
+
                     
 int networkAlertStub(float celcius) 
 {
@@ -51,7 +60,12 @@ int networkAlertStub(float celcius)
 }
                     
 int main() {
+    float celcius = 0;
     int (*Fn_Ptr_NetworkAlert)(float) = networkAlertStub;
+    float (*Fn_Ptr_FarenheitToCelcius) (float) = ReturnCelciusWithInputFarenheitStub;
+    celcius = ReturnCelciusWithInputFarenheitStub(100);
+    printf("%.1f",celcius);
+    assert(celcius == 37.8);
     alertInCelcius(400.5,Fn_Ptr_NetworkAlert); // Celcius 204.7 -> Alert
     alertInCelcius(303.6, Fn_Ptr_NetworkAlert); // Celcius 150.8 -> Don't Alert
     alertInCelcius(50,Fn_Ptr_NetworkAlert); // Celcius 10 -> Alert
