@@ -15,7 +15,7 @@ const char* minorColor[] = {"Blue", "Orange", "Green", "Brown", "Slate"};
 int ColorCodeIndexToBePrintedInConsole = 0;
 int MaxPossibleMajorColour = 5;
 int MaxPossibleMinorColour = 5;
-St_ColourInfo ParseColourStub(int majorColourIndex, int minorColourIndex);
+St_ColourInfo ReturnColourInfoFromColourIndicesStub(int majorColourIndex, int minorColourIndex);
 void printColourPairAndCodeInConsoleStub(int colorCode, char* majorColor, char* minorColor);
 
 int printColorMapStub(void (*Fn_Ptr_printColourPairAndCodeInConsole)(int,int,  char*,  char* ));
@@ -52,7 +52,7 @@ int printColorMapStub(void (*Fn_Ptr_printColourPairAndCodeInConsole)(int,int, ch
     {
         for(minorColourIndex = 0; minorColourIndex < 5; minorColourIndex++) 
         {
-            ColourInfo = ParseColourStub(majorColourIndex,minorColourIndex);
+            ColourInfo = ReturnColourInfoFromColourIndicesStub(majorColourIndex,minorColourIndex);
             Fn_Ptr_printColourPairAndCodeInConsole(majorColourIndex,minorColourIndex,ColourInfo.majorColour,ColourInfo.minorColour);
         }
     }
@@ -60,7 +60,7 @@ int printColorMapStub(void (*Fn_Ptr_printColourPairAndCodeInConsole)(int,int, ch
     return (minorColourIndex * majorColourIndex);
 }
 
-St_ColourInfo ParseColourStub(int majorColourIndex, int minorColourIndex)
+St_ColourInfo ReturnColourInfoFromColourIndicesStub(int majorColourIndex, int minorColourIndex)
 {
    
     St_ColourInfo ColourInfo;
@@ -91,7 +91,7 @@ int main() {
     // This is just a sample, similar checks can be made randomly for various colours.
     // For colour indices 0,0 (WHITE,BLUE) expected colour code is 1 and not 0.
     
-    test_colourInfo = ParseColourStub(test_majorColourIndex,test_minorColourIndex);
+    test_colourInfo = ReturnColourInfoFromColourIndicesStub(test_majorColourIndex,test_minorColourIndex);
     test_expectedColourCode = (test_majorColourIndex * 5 + test_minorColourIndex);
     assert(test_colourInfo.colourCode == test_expectedColourCode);
     assert(strcmp(test_colourInfo.majorColour,majorColor[test_majorColourIndex]) == 0);
