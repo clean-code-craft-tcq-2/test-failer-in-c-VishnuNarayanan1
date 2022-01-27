@@ -63,16 +63,15 @@ int main() {
     float celcius = 0;
     int (*Fn_Ptr_NetworkAlert)(float) = networkAlertStub;
     float (*Fn_Ptr_FarenheitToCelcius) (float) = ReturnCelciusWithInputFarenheitStub;
-    celcius = ReturnCelciusWithInputFarenheitStub(100);
-    printf("%.1f",celcius);
-    alertInCelcius(400.5,Fn_Ptr_FarenheitToCelcius,Fn_Ptr_NetworkAlert); 
-    /*assert(celcius == 37.8);
     alertInCelcius(400.5,Fn_Ptr_FarenheitToCelcius,Fn_Ptr_NetworkAlert); // Celcius 204.7 -> Alert
     alertInCelcius(303.6,Fn_Ptr_FarenheitToCelcius, Fn_Ptr_NetworkAlert); // Celcius 150.8 -> Don't Alert
     alertInCelcius(50,Fn_Ptr_FarenheitToCelcius,Fn_Ptr_NetworkAlert); // Celcius 10 -> Alert
     alertInCelcius(752,Fn_Ptr_FarenheitToCelcius,Fn_Ptr_NetworkAlert); // Celcius 400 -> Invalid use case
     alertInCelcius(0,Fn_Ptr_FarenheitToCelcius,Fn_Ptr_NetworkAlert); // Celcius 32 -> Invalid use case
-    assert(2 == alertFailureCount); */
+    assert(2 == alertFailureCount); 
+    celcius = ReturnCelciusWithInputFarenheitStub(100);
+    alertInCelcius(400.5,Fn_Ptr_FarenheitToCelcius,Fn_Ptr_NetworkAlert); 
+    assert(celcius == 37.8);
     printf("%d alerts failed.\n", alertFailureCount);
     printf("All is well (maybe!)\n");
     return 0;
