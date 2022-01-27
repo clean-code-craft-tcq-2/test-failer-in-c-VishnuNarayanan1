@@ -65,6 +65,7 @@ int main() {
     float (*Fn_Ptr_FarenheitToCelcius) (float) = ReturnCelciusWithInputFarenheitStub;
     celcius = ReturnCelciusWithInputFarenheitStub(100);
     printf("%.1f",celcius);
+    alertInCelcius(400.5,Fn_Ptr_FarenheitToCelcius,Fn_Ptr_NetworkAlert); 
     /*assert(celcius == 37.8);
     alertInCelcius(400.5,Fn_Ptr_FarenheitToCelcius,Fn_Ptr_NetworkAlert); // Celcius 204.7 -> Alert
     alertInCelcius(303.6,Fn_Ptr_FarenheitToCelcius, Fn_Ptr_NetworkAlert); // Celcius 150.8 -> Don't Alert
